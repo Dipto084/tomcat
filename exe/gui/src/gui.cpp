@@ -20,9 +20,8 @@ class MyApp : public wxApp {
 public:
   virtual bool OnInit();
   void onIdle(wxIdleEvent& evt);
-  vector<ASRWidgetFrameManipulator*> list;  
   void Update();
-  ASRWidgetFrameManipulator *manipulator1;
+  vector<ASRWidget *> list;
 };
 
 wxIMPLEMENT_APP(MyApp);
@@ -33,21 +32,12 @@ bool MyApp::OnInit() {
   // Generate ASRWidgets
   vector<string> asr_topics = {"agent/asr/final", "agent/asr/intermediate"};
   
-  queue<string> *queue1 = new queue<string>();
-  mutex *mutex1 = new mutex();
-  ASRWidget *widget1 = new ASRWidget(asr_topics, "x202201101", queue1, mutex1);
-  this->manipulator1 = new ASRWidgetFrameManipulator(queue1, mutex1, frame);
-  
-  queue<string> *queue2 = new queue<string>();
-  mutex *mutex2 = new mutex();
-  ASRWidget *widget2 = new ASRWidget(asr_topics, "x202201102", queue2, mutex2);
-  ASRWidgetFrameManipulator *manipulator2 = new ASRWidgetFrameManipulator(queue2, mutex2, frame);
-  
-  queue<string> *queue3 = new queue<string>();
-  mutex *mutex3 = new mutex();
-  ASRWidget *widget3 = new ASRWidget(asr_topics, "x202201103", queue3, mutex3);
-  ASRWidgetFrameManipulator *manipulator3 = new ASRWidgetFrameManipulator(queue3, mutex3, frame);
-  
+  ASRWidget *widget1 = new ASRWidget(asr_topics, "x202201101", frame);
+  ASRWidget *widget2 = new ASRWidget(asr_topics, "x202201102", frame);
+  ASRWidget *widget3 = new ASRWidget(asr_topics, "x202201103", frame);
+  list.push_back(widget1);
+  list.push_back(widget2);
+  list.push_back(widget3);
 
   // Show frame
   frame->Show();
@@ -59,7 +49,9 @@ bool MyApp::OnInit() {
 }
 
 void MyApp::Update(){
-	this->manipulator1->Update();
+	for(int i=0;i<list.size();i++){
+		list[i]->Update();
+	}
 }
 
 void MyApp::onIdle(wxIdleEvent& evt)
