@@ -1,3 +1,5 @@
+#pragma once 
+
 #include <vector>
 #include <string>
 #include <queue>
@@ -11,15 +13,19 @@
 
 #include "MyFrame1.h"
 
-#include "MosquittoClient.h"
+#include "Widget.h"
 
-class ASRWidget : public MosquittoClient {
+class ASRWidget : public Widget {
 	
 	public:
-		ASRWidget(std::vector<std::string> topics, std::string playername, MyFrame1 *frame);
+		inline static const std::string type = "ASRWidget";
+		inline static int current_id = 1;
+		int id = -1;
+	public:
+		ASRWidget();
 		~ASRWidget();
 
-		void Update();
+		void Update(MyFrame1 *frame) override;
 
 	protected:
 		void on_message(const std::string& topic,
@@ -28,9 +34,11 @@ class ASRWidget : public MosquittoClient {
 	private:
 		std::mutex mutex;
 		std::queue<std::string> queue;
+		
 		std::string playername;
-		MyFrame1 *frame;
+		int component_id;
 
-		void UpdatePrivate(std::string);
+	private:
+		void UpdatePrivate(std::string, MyFrame1 *frame);
 };
 
