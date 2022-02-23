@@ -28,6 +28,7 @@ add_executable(gui
     src/gui.cpp
     src/Mosquitto.cpp
     src/MosquittoClient.cpp
+    src/Widget.cpp
     src/ASRWidget.cpp
     src/MyFrame1.cpp
 )
@@ -41,3 +42,4 @@ target_link_libraries(
 )
 
 file(COPY templates/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/templates/)
+file(COPY config/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/config/)
