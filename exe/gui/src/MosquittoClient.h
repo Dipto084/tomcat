@@ -10,7 +10,6 @@
 class MosquittoClient : public Mosquitto {
   public:
     MosquittoClient();
-    MosquittoClient(std::vector<std::string> topics);
     ~MosquittoClient();
   
   protected:
@@ -19,13 +18,7 @@ class MosquittoClient : public Mosquitto {
 
   private:
     // MQTT Client
-    std::vector<std::string> topics;
     std::string mqtt_host = "localhost";
     int mqtt_port = 1883;
     std::thread loop_thread;
-
-    // wxWidgets frame data
-    double width;
-    double height;
-    std::string label;
 };

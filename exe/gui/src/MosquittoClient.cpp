@@ -8,17 +8,6 @@ using namespace std;
 
 MosquittoClient::MosquittoClient(){
 	this->connect(this->mqtt_host, this->mqtt_port, 1000, 1000, 1000);
-	this->subscribe("#");
-	this->set_max_seconds_without_messages(2147483647); // Max long value
-        this->loop_thread = thread([this] {this->loop();});
-}
-
-MosquittoClient::MosquittoClient(vector<string> topics){
-	this->connect(this->mqtt_host, this->mqtt_port, 1000, 1000, 1000);
-	for(string topic : topics){
-		std::cout << topic << std::endl;
-		this->subscribe(topic);
-	}
 	this->set_max_seconds_without_messages(2147483647); // Max long value
         this->loop_thread = thread([this] {this->loop();});
 }
