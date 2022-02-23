@@ -70,7 +70,7 @@ void ASRWidget::Update(MyFrame1 *frame){
 void ASRWidget::UpdatePrivate(string text, MyFrame1 *frame){
 	wxStaticText *static_text = (wxStaticText *)((*frame).FindWindow(this->component_id));
 	if(static_text == nullptr){
-		std::cout << "Failed to find component: " 
+		std::cout << "Failed to find component: " << this->component_id << " in type: " << this->type << std::endl;  
 		return;
 	}
 	static_text->SetLabel(text);
