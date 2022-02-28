@@ -24,6 +24,7 @@ find_package(nlohmann_json REQUIRED)
 find_package(Mosquitto REQUIRED)
 find_package(wxWidgets REQUIRED COMPONENTS net core base xrc)
 include(${wxWidgets_USE_FILE})
+include_directories(/usr/local/include/)
 add_executable(gui
     src/gui.cpp
     src/Mosquitto.cpp
@@ -40,6 +41,7 @@ target_link_libraries(
     ${wxWidgets_LIBRARIES}
     -pthread
 )
+
 
 file(COPY templates/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/templates/)
 file(COPY config/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/config/)
