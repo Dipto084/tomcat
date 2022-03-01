@@ -6,6 +6,8 @@
 #include <wx/wx.h>
 #endif
 
+#include <mathplot.h>
+
 #include <memory>
 #include <string>
 #include <vector>
