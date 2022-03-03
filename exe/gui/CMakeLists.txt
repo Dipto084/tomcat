@@ -24,17 +24,19 @@ find_package(nlohmann_json REQUIRED)
 find_package(Mosquitto REQUIRED)
 find_package(wxWidgets REQUIRED COMPONENTS net core base xrc)
 include(${wxWidgets_USE_FILE})
-include_directories(/usr/local/include/)
+#include_directories(/usr/local/include/)
 add_executable(gui
     src/gui.cpp
     src/Mosquitto.cpp
     src/MosquittoClient.cpp
     src/Widget.cpp
     src/ASRWidget.cpp
-    src/MyFrame1.cpp
+    #src/ScoreWidget.cpp
+    src/Frontend.cpp
 )
 target_link_libraries(
-    gui 
+    gui
+    #/usr/local/lib64/libmathplot.a 
     nlohmann_json::nlohmann_json
     ${Mosquitto_LIBRARIES}
     ${Boost_LIBRARIES}

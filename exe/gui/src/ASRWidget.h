@@ -1,17 +1,15 @@
 #pragma once 
 
-#include <vector>
-#include <string>
-#include <queue>
-#include <mutex>
-
 #include <wx/wxprec.h>
 #include <wx/xrc/xmlres.h>
 #ifndef WX_PRECOMP
 #include <wx/wx.h>
 #endif
 
-#include "MyFrame1.h"
+#include <vector>
+#include <string>
+#include <queue>
+#include <mutex>
 
 #include "Widget.h"
 
@@ -22,23 +20,28 @@ class ASRWidget : public Widget {
 		inline static int current_id = 1;
 		int id = -1;
 	public:
-		ASRWidget();
+		ASRWidget(wxFrame *frame);
 		~ASRWidget();
 
-		void Update(MyFrame1 *frame) override;
-
+		void Update() override;
 	protected:
 		void on_message(const std::string& topic,
                     const std::string& message) override;
 
 	private:
+		// Framework
 		std::mutex mutex;
 		std::queue<std::string> queue;
-		
+	
+		// Config values	
 		std::string playername;
-		int component_id;
+		std::string component_name;
+
+		// wx Components
+		wxStaticText *static_text;
 
 	private:
-		void UpdatePrivate(std::string, MyFrame1 *frame);
+		void Initialize();
+		void UpdatePrivate(std::string);
 };
 

@@ -1,3 +1,10 @@
+
+#include <wx/wxprec.h>
+#include <wx/xrc/xmlres.h>
+#ifndef WX_PRECOMP
+#include <wx/wx.h>
+#endif
+
 #include <vector>
 #include <string>
 #include <fstream>
@@ -8,20 +15,24 @@
 
 #include <nlohmann/json.hpp>
 
-#include "MyFrame1.h"
-
 #include "ASRWidget.h"
 
 using namespace std;
 
-ASRWidget::ASRWidget() : Widget(this->type){
+ASRWidget::ASRWidget(wxFrame *frame) : Widget(this->type){
+	// Set frame
+	this->frame = frame;
+	
 	// Update ID
 	this->id = this->current_id;
 	this->current_id++;
 	
 	// Get data from configuration
 	this->playername = this->configuration[to_string(this->id)]["playername"];
-	this->component_id = this->configuration[to_string(this->id)]["component_id"];
+	this->component_name = this->configuration[to_string(this->id)]["component_name"];
+
+	// Initialize widget
+	this->Initialize();
 }
 
 ASRWidget::~ASRWidget(){
@@ -55,7 +66,14 @@ void ASRWidget::on_message(const std::string& topic, const std::string& message)
 	}
 }
 
-void ASRWidget::Update(MyFrame1 *frame){
+void ASRWidget::Initialize(){
+	this->static_text = (wxStaticText *)this->frame->FindWindowByName(this->component_name);
+	if(static_text == nullptr){
+		std::cout << "Failed to find component: " << this->component_name << " in type: " << this->type << std::endl;
+	}
+}
+
+void ASRWidget::Update(){
 	this->mutex.lock();
 		if(this->queue.empty()){
 			this->mutex.unlock();
@@ -64,14 +82,9 @@ void ASRWidget::Update(MyFrame1 *frame){
 		std::string text = this->queue.front();
 		this->queue.pop();
 	this->mutex.unlock();
-	this->UpdatePrivate(text, frame);
+	this->UpdatePrivate(text);
 }
 
-void ASRWidget::UpdatePrivate(string text, MyFrame1 *frame){
-	wxStaticText *static_text = (wxStaticText *)((*frame).FindWindow(this->component_id));
-	if(static_text == nullptr){
-		std::cout << "Failed to find component: " << this->component_id << " in type: " << this->type << std::endl;  
-		return;
-	}
-	static_text->SetLabel(text);
+void ASRWidget::UpdatePrivate(string text){
+	this->static_text->SetLabel(text);
 }

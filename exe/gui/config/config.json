@@ -7,15 +7,21 @@
 		],
 		"1": {
 			"playername":"P000421",
-			"component_id": 10001
+			"component_name": "UTTERANCE_TEXT_1"
 		},
 		"2":{
 			"playername":"P000422",
-			"component_id": 10002
+			"component_name": "UTTERANCE_TEXT_2"
 		},
 		"3":{
 			"playername":"P000423",
-			"component_id": 10003
+			"component_name": "UTTERANCE_TEXT_3"
 		}
+	},
+	"ScoreWidget":{
+		"topics":[
+			"observations/events/scoreboard"
+		],
+		"panel_name": "SCORE_PANEL"
 	}
 }

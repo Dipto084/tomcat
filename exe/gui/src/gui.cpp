@@ -6,15 +6,14 @@
 #include <wx/wx.h>
 #endif
 
-#include <mathplot.h>
-
 #include <memory>
 #include <string>
 #include <vector>
 
-#include "MyFrame1.h"
+#include "Frontend.h"
 #include "Widget.h"
 #include "ASRWidget.h"
+//#include "ScoreWidget.h"
 
 using namespace std;
 
@@ -23,33 +22,41 @@ public:
   virtual bool OnInit();
   void onIdle(wxIdleEvent& evt);
   void Update();
-  
-  MyFrame1 *frame;
-  vector<Widget *> widgets;
+ 
+  vector<Widget *>widgets; 
+  UtteranceFrame *utterance_frame;
+  ScoreFrame *score_frame;
 };
 
 wxIMPLEMENT_APP(MyApp);
 
 bool MyApp::OnInit() {
-  this->frame = new MyFrame1(NULL);
+  
   
   // Generate ASRWidgets 
-  this->widgets.push_back(new ASRWidget());
-  this->widgets.push_back(new ASRWidget());
-  this->widgets.push_back(new ASRWidget());
-
+  this->utterance_frame = new UtteranceFrame(NULL);
+  this->widgets.push_back(new ASRWidget(this->utterance_frame));
+  this->widgets.push_back(new ASRWidget(this->utterance_frame));
+  this->widgets.push_back(new ASRWidget(this->utterance_frame));
+  
+  // Generate Score Widget
+  /*this->score_frame = new ScoreFrame(NULL);
+  this->widgets.push_back(new ScoreWidget(this->score_frame)); 
+  */
   // Show frame
-  this->frame->Show();
-  this->frame->Maximize();  
-  this->frame->Refresh();
-	
+  this->utterance_frame->Show();
+  this->utterance_frame->Maximize();  
+  this->utterance_frame->Refresh();
+  
   Connect( wxID_ANY, wxEVT_IDLE, wxIdleEventHandler(MyApp::onIdle) ); 
   return true;
 }
 
+
 void MyApp::Update(){
-	for(int i=0;i<widgets.size();i++){
-		widgets[i]->Update(this->frame);
+	// Update ASR Widgets
+	for(int i=0;i<this->widgets.size();i++){
+		this->widgets[i]->Update();
 	}
 }
 
