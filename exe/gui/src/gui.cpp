@@ -13,7 +13,7 @@
 #include "Frontend.h"
 #include "Widget.h"
 #include "ASRWidget.h"
-//#include "ScoreWidget.h"
+#include "ScoreWidget.h"
 
 using namespace std;
 
@@ -40,13 +40,13 @@ bool MyApp::OnInit() {
   this->widgets.push_back(new ASRWidget(this->utterance_frame));
   
   // Generate Score Widget
-  /*this->score_frame = new ScoreFrame(NULL);
+  this->score_frame = new ScoreFrame(NULL);
   this->widgets.push_back(new ScoreWidget(this->score_frame)); 
-  */
+  
   // Show frame
-  this->utterance_frame->Show();
-  this->utterance_frame->Maximize();  
-  this->utterance_frame->Refresh();
+  this->score_frame->Show();
+  this->score_frame->Maximize();  
+  this->score_frame->Refresh();
   
   Connect( wxID_ANY, wxEVT_IDLE, wxIdleEventHandler(MyApp::onIdle) ); 
   return true;

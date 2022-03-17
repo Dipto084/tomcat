@@ -4,6 +4,7 @@
 		"topics":[
 			"agent/asr/final",
 			"agent/asr/intermediate"
+			"trial"
 		],
 		"1": {
 			"playername":"P000421",

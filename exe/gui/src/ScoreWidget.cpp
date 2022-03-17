@@ -111,8 +111,8 @@ void ScoreWidget::Initialize(){
 	this->data_vector = new mpFXYVector();
 	this->time.insert(this->time.end(), {});
 	this->score.insert(this->score.end(), {});
-	//this->time.insert(this->time.end(), {1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
-	//this->score.insert(this->score.end(), {0, 20, 20, 120, 150, 190, 230, 300, 310, 320});
+	this->time.insert(this->time.end(), {1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+	this->score.insert(this->score.end(), {0, 20, 20, 120, 150, 190, 230, 300, 310, 320});
 	this->data_vector->SetData(this->time, this->score);
 	wxPen vectorpen(*wxBLUE, 5, wxSOLID);
 	this->data_vector->SetPen(vectorpen);
