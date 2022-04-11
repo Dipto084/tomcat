@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 ///////////////////////////////////////////////////////////////////////////
 // C++ code generated with wxFormBuilder (version 3.10.1-0-g8feb16b)
 // http://www.wxformbuilder.org/
@@ -16,9 +17,8 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	wxBoxSizer* bSizer1;
 	bSizer1 = new wxBoxSizer( wxVERTICAL );
 
-	m_staticText1 = new wxStaticText( this, 10001, wxT("m_staticText1"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText1 = new wxTextCtrl( this, 10001, wxT("m_staticText1"), wxDefaultPosition, wxDefaultSize*4, 0 );
 	m_staticText1->SetLabelMarkup( wxT("m_staticText1") );
-	m_staticText1->Wrap( -1 );
 	bSizer1->Add( m_staticText1, 0, wxALL, 5 );
 
 	m_staticText2 = new wxStaticText( this, 10002, wxT("m_staticText2"), wxDefaultPosition, wxDefaultSize, 0 );

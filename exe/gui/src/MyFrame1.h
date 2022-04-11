@@ -11,6 +11,7 @@
 #include <wx/xrc/xmlres.h>
 #include <wx/string.h>
 #include <wx/stattext.h>
+#include <wx/textctrl.h>
 #include <wx/gdicmn.h>
 #include <wx/font.h>
 #include <wx/colour.h>
@@ -29,7 +30,7 @@ class MyFrame1 : public wxFrame
 	private:
 
 	public:
-		wxStaticText* m_staticText1;
+		wxTextCtrl* m_staticText1;
 		wxStaticText* m_staticText2;
 		wxStaticText* m_staticText3;
 

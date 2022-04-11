@@ -36,7 +36,7 @@ add_executable(gui
 )
 target_link_libraries(
     gui
-    /usr/local/lib64/libmathplot.a 
+    /usr/local/lib/libmathplot.a 
     nlohmann_json::nlohmann_json
     ${Mosquitto_LIBRARIES}
     ${Boost_LIBRARIES}

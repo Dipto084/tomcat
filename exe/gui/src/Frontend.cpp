@@ -56,9 +56,8 @@ UtteranceFrame::UtteranceFrame( wxWindow* parent, wxWindowID id, const wxString&
 
 	wxBoxSizer* bSizer3;
 	bSizer3 = new wxBoxSizer( wxVERTICAL );
-
-	m_staticText1 = new wxStaticText( this, UTTERANCE_TEXT_1, wxT("DefaultText"), wxDefaultPosition, wxDefaultSize, 0, wxT("UTTERANCE_TEXT_1") );
-	m_staticText1->Wrap( -1 );
+    
+	m_staticText1 = new wxTextCtrl( this, UTTERANCE_TEXT_1, wxT("DefaultText"), wxDefaultPosition, wxDefaultSize*4, 0, wxDefaultValidator, wxT("UTTERANCE_TEXT_1"));
 	bSizer3->Add( m_staticText1, 0, wxALL, 5 );
 
 	m_staticText2 = new wxStaticText( this, UTTERANCE_TEXT_2, wxT("DefaultText"), wxDefaultPosition, wxDefaultSize, 0, wxT("UTTERANCE_TEXT_2") );

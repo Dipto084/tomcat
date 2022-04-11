@@ -23,6 +23,7 @@
 #include <wx/stattext.h>
 #include <wx/frame.h>
 #include <wx/panel.h>
+#include <wx/textctrl.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -46,7 +47,7 @@ class UtteranceFrame : public wxFrame
 		wxButton* m_button3;
 		wxButton* m_button4;
 		wxButton* m_button5;
-		wxStaticText* m_staticText1;
+		wxTextCtrl* m_staticText1;
 		wxStaticText* m_staticText2;
 		wxStaticText* m_staticText3;
 

@@ -38,7 +38,7 @@ class ASRWidget : public Widget {
 		std::string component_name;
 
 		// wx Components
-		wxStaticText *static_text;
+		wxTextCtrl *static_text;
 
 	private:
 		void Initialize();

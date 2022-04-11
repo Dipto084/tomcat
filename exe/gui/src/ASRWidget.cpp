@@ -67,7 +67,7 @@ void ASRWidget::on_message(const std::string& topic, const std::string& message)
 }
 
 void ASRWidget::Initialize(){
-	this->static_text = (wxStaticText *)this->frame->FindWindowByName(this->component_name);
+	this->static_text = (wxTextCtrl *)this->frame->FindWindowByName(this->component_name);
 	if(static_text == nullptr){
 		std::cout << "Failed to find component: " << this->component_name << " in type: " << this->type << std::endl;
 	}
@@ -86,5 +86,5 @@ void ASRWidget::Update(){
 }
 
 void ASRWidget::UpdatePrivate(string text){
-	this->static_text->SetLabel(text);
+	this->static_text->AppendText(text);
 }
