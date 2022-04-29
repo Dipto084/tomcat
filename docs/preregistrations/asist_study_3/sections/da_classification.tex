@@ -88,4 +88,22 @@ To evaluate our approach, we will use F1 score as the evaluation metric. For
 multiclass classification problems, especially where the classes are highly
 imbalanced, F1 score provides more insight than accuracy.  We also intend to
 annotate ASIST data for dialog Acts so that the system trained on MRDA can be
-finetuned on ASIST.
+finetuned on ASIST. 
+
+\begin{center}
+\begin{tabular}{||c c c c||}
+ \hline
+ Label & Precision & Recall & F1 Score\\ [0.5ex]
+ \hline\hline
+ Yes/No Question & 0.80 & 0.39  & 0.52\\
+ \hline
+ Command & 0.52 & 0.46  & 0.49\\
+ \hline
+ Accept & 0.45 & 0.40 &  0.42 \\
+ \hline
+  Reject & 0.50 & 0.35 & 0.41\\
+ \hline
+  Understanding Check & 0.18 & 0.34 & 0.24\\
+ \hline
+\end{tabular}
+\end{center}
